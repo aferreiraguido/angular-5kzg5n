@@ -1,0 +1,30 @@
+<kendo-treelist
+  [kendoTreeListFlatBinding]="data"
+  [height]="510"
+  kendoTreeListExpandable
+  idField="id"
+  parentIdField="managerId"
+>
+  <kendo-treelist-column
+    [expandable]="true"
+    title="Grupos > Consistencias > Operación"
+    [width]="500"
+  >
+    <ng-template kendoTreeListCellTemplate let-dataItem>
+      {{ dataItem.name }}
+      <button *ngIf="!dataItem.hasChildren" style="float: right">
+        Detalle
+      </button>
+    </ng-template>
+  </kendo-treelist-column>
+  <kendo-treelist-column field="Position" title="Acción" [width]="180">
+    <ng-template kendoTreeListCellTemplate let-i
+      >{{i.hasChildren ? "" : i.task}}</ng-template
+    >
+  </kendo-treelist-column>
+  <kendo-treelist-column field="Extension" title="Estado" [width]="180">
+    <ng-template kendoTreeListCellTemplate let-i
+      >{{i.hasChildren ? "" : i.status}}</ng-template
+    >
+  </kendo-treelist-column>
+</kendo-treelist>
